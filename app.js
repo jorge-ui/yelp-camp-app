@@ -13,6 +13,7 @@ var express               = require("express"),
     passport              = require('passport'),
     LocalStrategy         = require('passport-local'),
     passportLocalMongoose = require('passport-local-mongoose'),
+    http                  = require('http');
     flash                 = require('connect-flash');
 
 // Wipe database and refill it with new seed data
@@ -24,6 +25,7 @@ var express               = require("express"),
         // Local
         //mongoose.connect("mongodb://localhost:27017/Yelp_Camp", { useNewUrlParser: true });
         // MongoDB Atlas
+        console.log(process.env.DATABASEURL);
         mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
     // Include mongoose models
     var Campground = require("./models/campground"),
