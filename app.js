@@ -24,7 +24,7 @@ var express               = require("express"),
         // Local
         //mongoose.connect("mongodb://localhost:27017/Yelp_Camp", { useNewUrlParser: true });
         // MongoDB Atlas
-        // mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+        mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
     // Include mongoose models
     var Campground = require("./models/campground"),
         User       = require("./models/user"),
@@ -103,6 +103,6 @@ app.use('/campgrounds/:id/comments', commentsRoutes);
     app.listen(PORT, process.env.IP, () => {
         console.log('Yelp Camp app started.');
         if (localHost) {
-            require('open')('http://localhost:' + PORT);
+            // require('open')('http://localhost:' + PORT);
         }
     });
