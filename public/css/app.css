@@ -1,0 +1,25 @@
+body{
+    background-color: #c7d1d6;
+}
+
+nav{
+    background-color: #4682B4;
+    color: white;
+}
+
+.img-thumbnail {
+    padding: 0;
+}
+.img-thumbnail img {
+    width: 100%;
+}
+
+figcaption {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#commentButtons {
+    background-color: rgb(223, 223, 223);
+    margin-bottom: 5px;
+}

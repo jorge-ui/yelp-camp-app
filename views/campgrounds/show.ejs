@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-9">
+            <figure class="img-thumbnail">
+                <img class="rounded d-block img-fluid mx-auto mb-3" src="<%= campground.image %>">
+                <figcaption class="caption-full">
+                    <div class="clearfix">
+                        <div class="float-left">
+                            <h4 class="float-right my-0">
+                                <%=campground.name%>
+                            </h4>
+                        </div>
+                        <div class="float-right">
+                            <h4 class="float-right">9.00/night</h4>
+                        </div>
+                    </div>
+                    <p>
+                        <%= campground.description %>
+                    </p>
+                    <div class="clearfix mb-3">
+                        <div class="float-left">
+                            <p class="my-auto"><em>Submited by <a class="text-muted" href="#">
+                                        <%= campground.author.username %></a></em></p>
+                        </div>
+                        <div class="float-right">
+                            <% if (currentUser && campground.author._id.equals(currentUser._id)) { %>
+                            <a class="btn btn-warning btn-sm" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                            <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <!--comments sec-->
+            <div class="rounded border bg-white p-3">
+                <div class="clearfix">
+                    <div class="float-right">
+                        <a class="float-right d-block btn btn-success btn-sm" href="/campgrounds/<%=campground._id%>/comments/new">New comment</a>
+                    </div>
+                </div>
+                <hr>
+                <!--comment div-->
+                <% campground.comments.forEach((comment) => { %>
+                    <% include ./partials/comment %>
+                <% }); %>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

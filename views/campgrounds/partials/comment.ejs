@@ -1,0 +1,26 @@
+<li class="list-group-item border-0 bg-light rounded pb-1 mb-2 pt-0">
+    <div class="clearfix">
+        <div class="float-left">
+            <p class="my-1"><strong>
+                    <%= comment.author.username %></strong></p>
+        </div>
+        <div class="float-right">
+            <span class="text-muted align-middle">10 days ago</span>
+        </div>
+    </div>
+    <!--comment-->
+    <p class="mb-2"><%= comment.text %></p>
+    <div id="commentButtons" class="btn-group rounded-pill align-middle" role="group" aria-label="Basic example">
+        <% if (currentUser && comment.author._id.equals(currentUser._id)) { %>
+        <a class="border-0 btn btn-sm btn-outline-warning rounded-circle align-middle" href="/campgrounds/<%=campground._id%>/comments/<%= comment._id %>/edit">
+            <i class="fas fa-pencil-alt"></i>
+        </a>
+        <form class="d-inline" action="/campgrounds/<%=campground._id%>/comments/<%= comment._id %>?_method=DELETE"
+            method="POST">
+            <button class="border-0 btn btn-sm btn-outline-danger rounded-circle align-middle">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </form>
+        <% } %>
+    </div>
+</li>
