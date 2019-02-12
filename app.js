@@ -111,6 +111,6 @@ app.use('/campgrounds/:id/comments', commentsRoutes);
     app.listen(PORT, process.env.IP, () => {
         console.log('Yelp Camp app started.');
         if (localHost) {
-            // require('open')('http://localhost:' + PORT);
+            require('open')('http://localhost:' + PORT);
         }
     });
