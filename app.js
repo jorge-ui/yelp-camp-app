@@ -26,7 +26,13 @@ var express               = require("express"),
         //mongoose.connect("mongodb://localhost:27017/Yelp_Camp", { useNewUrlParser: true });
         // MongoDB Atlas
         console.log(process.env.DATABASEURL);
-        mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+        mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true }, function (err, res) {
+            if (err) {
+                console.log ('ERROR connecting to: ' + process.env.DATABASEURL + '. ' + err);
+                } else {
+                console.log ('Succeeded connected to: ' + process.env.DATABASEURL);
+                }
+        });
     // Include mongoose models
     var Campground = require("./models/campground"),
         User       = require("./models/user"),
